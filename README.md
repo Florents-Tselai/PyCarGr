@@ -14,7 +14,8 @@ and thought that it'd make sense to scrape it and maybe do some aggregate statis
 This required a more structured approach, hence I developed *PyCarGr*
  
 *PyCarGr* is an unofficial car.gr API backed-by flask.
-It provides developers to access to car data and search results.
+It provides programmatic access to car data and search results.
+Search results can also be exported as a nicely formatted csv file
 
 Although initially I didn't want to include a database for a utility project like this,
 I'd like to be gentle to the website's server;
@@ -111,7 +112,7 @@ otherwise you may run into one of the [two hard problems in computer science](ht
 |---|---|---|
 |format   |string   |Output format csv or json. Default is json  |
 
-The `search params` are the same that one sees when does on the official: 
+The `search params` are the same that one sees when does a search on the official: 
 For example:
 `GET /api/search?fs=1&condition=Μεταχειρισμένο&offer_type=sale&price-from=>60000&mileage-to=<5000&rg=3`
 will return the following json which is backed by [these](https://www.car.gr/classifieds/cars/?fs=1&condition=%CE%9C%CE%B5%CF%84%CE%B1%CF%87%CE%B5%CE%B9%CF%81%CE%B9%CF%83%CE%BC%CE%AD%CE%BD%CE%BF&offer_type=sale&price-from=%3E60000&mileage-to=%3C5000&rg=3) search results.
