@@ -1,7 +1,7 @@
 # PyCarGr - Unofficial car.gr API
 
 Searching for a car in Greece (and elsewhere probably) can be a boring process.
-As my main search engine I use [car.gr](https://car.gr)
+As my main search engine I use [car.gr](https:σε//car.gr)
 which is the largest online marketplace for cars in Greece.
 As I was clicking through checkboxes and dropdowns every now end then to check if there are any new entries
 that fit my search criteria, it occurred to me that I'me a programmer so there must be a more efficient (and fun) way to
@@ -104,7 +104,7 @@ otherwise you may run into one of the [two hard problems in computer science](ht
 
 ### Search Results
 
-* `GET /api/sarch?{search params}` - Get search results
+* `GET /api/search?{search params}` - Get search results
 
 
 #### Parameters
