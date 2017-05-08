@@ -13,6 +13,8 @@ from .config import REDIS_URI, SEARCH_BASE_URL
 from .parser import parse_car_page, parse_search_results
 
 app = Flask(__name__)
+app.config['JSON_AS_ASCII'] = False
+
 redis_con = redis.StrictRedis(REDIS_URI)
 
 
