@@ -9,7 +9,7 @@ setup(
     packages=['pycargr', ],
     license='The MIT License (MIT) Copyright © 2017 Florents Tselai.',
     description='PyCarGr - Unofficial car.gr API',
-    long_description=open('README', 'r').read(),
+    long_description=open('README.md', 'r').read(),
     author='Florents Tselai',
     author_email='florents.tselai@gmail.com',
     url='https://github.com/Florents-Tselai/PyCarGr',
