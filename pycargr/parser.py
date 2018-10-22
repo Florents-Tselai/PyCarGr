@@ -9,8 +9,7 @@ from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
 
-from .db import RedisCache
-from .model import Car, to_dict
+from pycargr.model import Car
 
 
 class SearchResultPageParser:
@@ -164,19 +163,21 @@ class CarItemParser:
         c.postal_code = self.parse_postal_code()
         c.transmission = self.parse_transmission()
         c.images = self.parse_images()
+        c.html = self.html
 
         return c
 
 
 def parse_search_results(search_url):
     car_ids = SearchResultPageParser(search_url).parse()
-    results = []
     for car_id in car_ids:
-        car_data = parse_car_page(car_id)
-        results.append(car_data)
-    return results
+        yield parse_car_page(car_id)
 
 
 def parse_car_page(car_id):
     car = CarItemParser(car_id).parse()
-    return to_dict(car)
+    return car
+
+
+from pycargr import save_car
+save_car(parse_car_page('15107475'))

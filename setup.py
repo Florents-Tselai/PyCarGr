@@ -1,7 +1,25 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from distutils.core import setup
+# !/usr/bin/python
+# -*- encoding: utf-8 -*-
+
+from sqlite3 import connect
+
+from setuptools import setup
+from setuptools.command.install import install
+
+from pycargr import DB_PATH
+
+
+class CustomInstall(install):
+
+    def run(self):
+        install.run(self)
+
+        with connect(str(DB_PATH)) as db_con:
+            db_con.executescript(open('schema.sql').read())
+
 
 setup(
     name='PyCarGr',
@@ -13,5 +31,7 @@ setup(
     install_requires=open('requirements.txt', 'r').readlines(),
     author='Florents Tselai',
     author_email='florents.tselai@gmail.com',
-    url='https://github.com/Florents-Tselai/PyCarGr'
+    url='https://github.com/Florents-Tselai/PyCarGr',
+    cmdclass={'install': CustomInstall}
+
 )

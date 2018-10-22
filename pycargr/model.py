@@ -6,7 +6,11 @@ __author__ = 'Florents Tselai'
 
 class Car:
     def __init__(self, car_id):
-        self.car_id = car_id
+        self._car_id = car_id
+
+    @property
+    def car_id(self):
+        return self._car_id
 
     @property
     def title(self):
@@ -49,7 +53,7 @@ class Car:
         self._url = url
 
     @property
-    def km(self, km):
+    def km(self):
         return self._km
 
     @km.setter
@@ -127,6 +131,14 @@ class Car:
     @images.setter
     def images(self, images):
         self._images = images
+
+    @property
+    def html(self):
+        return self._html
+
+    @html.setter
+    def html(self, html):
+        self._html = html
 
 
 def to_dict(model):
