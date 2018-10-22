@@ -140,6 +140,14 @@ class Car:
     def html(self, html):
         self._html = html
 
+    @property
+    def scraped_at(self):
+        return self._scraped_at
+
+    @scraped_at.setter
+    def scraped_at(self, scraped_at):
+        self._scraped_at = scraped_at
+
 
 def to_dict(model):
     return dict((get_key(key), value)

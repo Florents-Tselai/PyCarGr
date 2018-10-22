@@ -8,7 +8,7 @@ from urllib.request import urlopen, Request
 
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
-
+from datetime import datetime
 from pycargr.model import Car
 
 
@@ -53,8 +53,8 @@ class CarItemParser:
     def parse_km(self):
         try:
             for td in self.soup.find_all('td'):
-                if 'χμ' in td.text:
-                    return float(td.text.replace('.', '').replace('χμ', ''))
+                if 'χλμ' in td.text:
+                    return float(td.text.replace('.', '').replace('χλμ', ''))
         except Exception:
             return None
         return None
@@ -163,7 +163,8 @@ class CarItemParser:
         c.postal_code = self.parse_postal_code()
         c.transmission = self.parse_transmission()
         c.images = self.parse_images()
-        c.html = self.html
+        c.html = '' #self.html
+        c.scraped_at = datetime.now().isoformat()
 
         return c
 
