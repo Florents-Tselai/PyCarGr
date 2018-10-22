@@ -168,18 +168,12 @@ class CarItemParser:
         return c
 
 
-def parse_search_results(search_url, redis_con):
+def parse_search_results(search_url):
     car_ids = SearchResultPageParser(search_url).parse()
     results = []
-    cache_api = RedisCache(redis_con)
     for car_id in car_ids:
-        if cache_api.car_is_cached(car_id):
-            results.append(cache_api.get_cached_car(car_id))
-        else:
-            car_data = parse_car_page(car_id)
-            cache_api.cache_car(car_id, car_data, expire_in=12 * 3600)
-            results.append(car_data)
-
+        car_data = parse_car_page(car_id)
+        results.append(car_data)
     return results
 
 

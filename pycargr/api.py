@@ -6,16 +6,14 @@ __author__ = 'Florents Tselai'
 import csv
 from urllib.parse import urlencode
 
-import redis
 from flask import Flask, jsonify, request, send_file
 
-from .config import REDIS_URI, SEARCH_BASE_URL
+from .config import SEARCH_BASE_URL
 from .parser import parse_car_page, parse_search_results
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 
-redis_con = redis.StrictRedis(REDIS_URI)
 
 
 @app.route("/api/car/<car>", methods=["GET"])
@@ -33,7 +31,7 @@ def search():
     # pass the rest as search params
     search_url = SEARCH_BASE_URL + '?' + urlencode(request_args)
 
-    results = parse_search_results(search_url, redis_con)
+    results = parse_search_results(search_url)
 
     if export_format == 'json':
         return jsonify(results)
