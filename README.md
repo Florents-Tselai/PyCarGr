@@ -1,7 +1,7 @@
 # PyCarGr - Unofficial car.gr API
 
 Searching for a car in Greece (and elsewhere probably) can be a boring process.
-As my main search engine I use [car.gr](https:σε//car.gr)
+As my main search engine I use [car.gr](https:///www.car.gr)
 which is the largest online marketplace for cars in Greece.
 As I was clicking through checkboxes and dropdowns every now end then to check if there are any new entries
 that fit my search criteria, it occurred to me that I'me a programmer so there must be a more efficient (and fun) way to
@@ -17,14 +17,7 @@ This required a more structured approach, hence I developed *PyCarGr*
 It provides programmatic access to car data and search results.
 Search results can also be exported as a nicely formatted csv file
 
-Although initially I didn't want to include a database for a utility project like this,
-I'd like to be gentle to the website's server;
-as Abraham Lincoln used to say: "When you scrape a website make sure you don't hammer its servers".
-That is why I added a Redis layer to be used as a cache for the results.
-The data for each car are cached for 24-hours so that the corresponding page won't be scraped during that period.
-This however can be configured via the `config.CACHE_EXPIRE_IN`
-but if it's set too low it will increase the chances of your IP getting blocked.
-
+Results are replicated in a SQLite Database.
 
 ## Installation
 Before running *PyCarGr API*, you have to clone the code from this repository, install requirements at first.
