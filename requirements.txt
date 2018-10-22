@@ -1,4 +1,4 @@
-flask==0.12
+flask>=0.12.3
 bs4==0.0.1
 requests==2.13.0
 fake-useragent==0.1.7
