@@ -181,4 +181,3 @@ def parse_car_page(car_id):
 
 
 from pycargr import save_car
-save_car(parse_car_page('15107475'))

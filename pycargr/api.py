@@ -8,17 +8,17 @@ from urllib.parse import urlencode
 
 from flask import Flask, jsonify, request, send_file
 
-from .config import SEARCH_BASE_URL
-from .parser import parse_car_page, parse_search_results
+from pycargr.config import SEARCH_BASE_URL
+from pycargr.parser import parse_car_page, parse_search_results
+from pycargr.model import to_dict
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 
 
-
 @app.route("/api/car/<car>", methods=["GET"])
 def get_car(car):
-    return jsonify(parse_car_page(car))
+    return jsonify(to_dict(parse_car_page(car)))
 
 
 @app.route("/api/search", methods=["GET"])
@@ -34,7 +34,7 @@ def search():
     results = parse_search_results(search_url)
 
     if export_format == 'json':
-        return jsonify(results)
+        return jsonify(list(map(to_dict, results)))
 
     elif export_format == 'csv':
         with open(app.root_path + 'data.csv', 'w') as f:
@@ -51,3 +51,7 @@ def search():
 
     else:
         return jsonify(error='Unsupported export format. Can only format=csv or format=json'), 400
+
+
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=5000, debug=True)
