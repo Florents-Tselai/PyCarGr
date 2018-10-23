@@ -8,7 +8,7 @@ from urllib.request import urlopen, Request
 
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
-from datetime import datetime
+
 from pycargr.model import Car
 
 
@@ -163,12 +163,13 @@ class CarItemParser:
         c.postal_code = self.parse_postal_code()
         c.transmission = self.parse_transmission()
         c.images = self.parse_images()
-        c.html = '' #self.html
+        c.html = ''  # self.html
         c.scraped_at = datetime.now().isoformat()
 
         return c
 
 
+# Utility methods
 def parse_search_results(search_url):
     car_ids = SearchResultPageParser(search_url).parse()
     for car_id in car_ids:
@@ -178,6 +179,3 @@ def parse_search_results(search_url):
 def parse_car_page(car_id):
     car = CarItemParser(car_id).parse()
     return car
-
-
-from pycargr import save_car

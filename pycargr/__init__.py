@@ -6,6 +6,8 @@ from pycargr.model import Car
 
 DB_PATH = Path.home().joinpath('pycargr.db')
 
+SEARCH_BASE_URL = 'https://www.car.gr/classifieds/cars/'
+
 
 def save_car(*cars):
     assert all(isinstance(c, Car) for c in cars)

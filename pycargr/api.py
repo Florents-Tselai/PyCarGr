@@ -8,7 +8,7 @@ from urllib.parse import urlencode
 
 from flask import Flask, jsonify, request, send_file
 
-from pycargr.config import SEARCH_BASE_URL
+from pycargr import SEARCH_BASE_URL
 from pycargr.parser import parse_car_page, parse_search_results
 from pycargr.model import to_dict
 
