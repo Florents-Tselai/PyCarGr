@@ -27,8 +27,8 @@ def main():
                 # images is a list - not suitable for csv
                 d.pop('images')
                 writer.writerow(d)
-    elif output == 'stdout':
-    print(dumps(results, sort_keys=True, indent=4, ensure_ascii=False))
+    elif output == 'json' or output == 'stdout':
+        print(dumps(results, sort_keys=True, indent=4, ensure_ascii=False))
 
 
 if __name__ == '__main__':
