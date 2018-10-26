@@ -31,10 +31,11 @@ class SearchResultPageParser:
                     self.num_results = int(f.text.split()[0])
 
     def parse(self):
-        car_ids = []
         for a in self.soup.find_all('a', class_='vehicle list-group-item clsfd_list_row'):
-            car_ids.append(int(a.get('href').replace('/', '').split('-')[0]))
-        return car_ids
+            yield str(int(a.get('href').replace('/', '').split('-')[0].replace('classifiedscarsview', '')))
+
+    def __len__(self):
+        return self.num_results
 
 
 class CarItemParser:
