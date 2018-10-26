@@ -36,6 +36,9 @@ class SearchResultPageParser:
             car_ids.append(int(a.get('href').replace('/', '').split('-')[0]))
         return car_ids
 
+    def __len__(self):
+        return self.num_results
+
 
 class CarItemParser:
     def __init__(self, car_id):
