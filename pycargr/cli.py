@@ -8,7 +8,8 @@ from pycargr.parser import parse_car_page
 parser = ArgumentParser(description='CLI interface to interact with car.gr')
 parser.add_argument('car_ids', nargs='+')
 parser.add_argument('--output', choices=['csv', 'json', 'stdout'], default='stdout')
-parser.add_argument('--scrape',
+parser.add_argument('-s', '--scrape',
+                    action='store_true',
                     help='If set scraps the page again and replace the DB entry. Otherwise atempts to read from already-scraped version',
                     default=True)
 
