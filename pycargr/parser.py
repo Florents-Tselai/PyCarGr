@@ -141,7 +141,7 @@ class CarItemParser:
     def parse_images(self):
         try:
             images_urls = []
-            for img in self.soup.find_all('img', itemprop='image'):
+            for img in self.soup.find_all('img', class_='bigphoto'):
                 images_urls.append(img.get('src').replace(r'//', 'https://').replace('_v', '_b'))
             return images_urls
         except Exception:
@@ -164,7 +164,7 @@ class CarItemParser:
         c.postal_code = self.parse_postal_code()
         c.transmission = self.parse_transmission()
         c.images = self.parse_images()
-        c.html = ''  # self.html
+        c.html = self.html
         c.scraped_at = datetime.now().isoformat()
 
         return c
