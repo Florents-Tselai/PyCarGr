@@ -32,6 +32,9 @@ setup(
     author='Florents Tselai',
     author_email='florents.tselai@gmail.com',
     url='https://github.com/Florents-Tselai/PyCarGr',
-    cmdclass={'install': CustomInstall}
+    cmdclass={'install': CustomInstall},
+    entry_points={
+        'console_scripts': ['pycargr=pycargr.cli:main'],
+    }
 
 )
