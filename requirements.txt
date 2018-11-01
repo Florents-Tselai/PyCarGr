@@ -1,5 +1,5 @@
 flask>=0.12.3
 bs4==0.0.1
-requests=2.20.0
+requests==2.20.0
 fake-useragent==0.1.7
 tqdm==4.28.1
